@@ -8,10 +8,19 @@
 // 5B) If the player ends all 3 turns without matching all 6 pairs of cards, the player loses, the Turn indicator will change to the message "Try Again", and the game will end.
 // 6) Once the game ends with either result, the "Play Again" button will no longer be hidden and, once clicked, will re-initalize the game.
 
+/*----- constants -----*/
 const cardChoices = [
     {
         card: 'cipactli',
         img: 'Images/cipactli.png'
+    },
+    {
+        card: 'cipactli',
+        img: 'Images/cipactli.png' 
+    },
+    {
+        card: 'coatl',
+        img: 'Images/coatl.png'
     },
     {
         card: 'coatl',
@@ -20,6 +29,14 @@ const cardChoices = [
     {
         card: 'cozcacuauhtli',
         img: 'Images/cozcacuauhtli.png'
+    },
+    {
+        card: 'cozcacuauhtli',
+        img: 'Images/cozcacuauhtli.png'
+    },
+    {
+        card: 'cuauhtli',
+        img: 'Images/cuauhtli.png'
     },
     {
         card: 'cuauhtli',
@@ -34,3 +51,24 @@ const cardChoices = [
         img: 'Images/mazatl.png'
     }
 ]
+
+/*----- state variables -----*/
+
+
+
+/*----- cached elements  -----*/
+
+
+/*----- event listeners -----*/
+
+
+
+/*----- functions -----*/
+function randomizeCards(arr) {
+    for (let i = arr.length - 1; i > 0;  i --) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+}
+randomizeCards(cardChoices)
+console.log(cardChoices)

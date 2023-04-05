@@ -16,18 +16,13 @@ header {
     font-size: 8vmin;
     font-family: 'Tillana', cursive;
     color: darkolivegreen;
-    margin-top: 20vmin;
+    margin-top: 3vmin;
     text-decoration: underline;
     text-decoration-color: black;
 }
 
-h1 {
-    font-family: 'Tillana', cursive;
-    color: firebrick;
-    margin-top: 0;
-    font-size: 5vmin;
-    text-decoration: underline;
-    text-decoration-color: black;
+header > span {
+    color:firebrick
 }
 
 h2 {
