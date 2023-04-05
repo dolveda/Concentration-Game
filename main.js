@@ -7,3 +7,30 @@
 // 5) If the player is able to match all 6 pairs of cards before all 3 turns have been exhausted, the player wins, the Turn indicator will change to display the message "You Win!!!", and the game will end.
 // 5B) If the player ends all 3 turns without matching all 6 pairs of cards, the player loses, the Turn indicator will change to the message "Try Again", and the game will end.
 // 6) Once the game ends with either result, the "Play Again" button will no longer be hidden and, once clicked, will re-initalize the game.
+
+const cardChoices = [
+    {
+        card: 'cipactli',
+        img: 'Images/cipactli.png'
+    },
+    {
+        card: 'coatl',
+        img: 'Images/coatl.png'
+    },
+    {
+        card: 'cozcacuauhtli',
+        img: 'Images/cozcacuauhtli.png'
+    },
+    {
+        card: 'cuauhtli',
+        img: 'Images/cuauhtli.png'
+    },
+    {
+        card: 'itzcuintli',
+        img: 'Images/itzcuintli.png'
+    },
+    {
+        card: 'mazatl',
+        img: 'Images/mazatl.png'
+    }
+]
