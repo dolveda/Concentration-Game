@@ -47,28 +47,67 @@ const cardChoices = [
         img: 'Images/itzcuintli.png'
     },
     {
+        card: 'itzcuintli',
+        img: 'Images/itzcuintli.png'
+    },
+    {
+        card: 'mazatl',
+        img: 'Images/mazatl.png'
+    },
+    {
         card: 'mazatl',
         img: 'Images/mazatl.png'
     }
 ]
+/*----- cached elements  -----*/
+const gameBoard = document.querySelectorAll('.cards');
+const gameBoardArr = [...document.querySelectorAll('.cards')];
+
+
+
+
+
+
+
 
 /*----- state variables -----*/
+let cardBacks = '';
 
 
 
-/*----- cached elements  -----*/
 
 
 /*----- event listeners -----*/
-
+gameBoardArr.forEach(function(card, idx) {
+    card.addEventListener('click', function() {
+        let chosenCard = cardChoices[idx]
+        card.firstChild.setAttribute('src', chosenCard.img)
+        console.log(chosenCard.img)
+        console.log(card.firstChild)
+    })
+})
 
 
 /*----- functions -----*/
+// initialize();
+
 function randomizeCards(arr) {
     for (let i = arr.length - 1; i > 0;  i --) {
         const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]]
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
-randomizeCards(cardChoices)
-console.log(cardChoices)
+randomizeCards(cardChoices);
+
+function  render() {
+    renderGameBoard();
+}
+
+
+
+
+
+// renderGameBoard()
+
+
+

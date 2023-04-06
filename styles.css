@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    font-size: 8vmin;
+    font-size: 6vmin;
     font-family: 'Tillana', cursive;
     color: darkolivegreen;
     margin-top: 3vmin;
@@ -46,14 +46,14 @@ h3 > span{
     color: black;
 }
 
-#cards {
+#gameboard {
     display: grid;
-    grid-template-columns: repeat(4, 20vmin) ;
-    grid-template-rows: repeat(3, 20vmin);
+    grid-template-columns: repeat(4, 15vmin) ;
+    grid-template-rows: repeat(3, 15vmin);
     gap: 3vmin;
 }
 
-#cards > div {
+.cards {
     border: .01vmin transparent;
     border-radius: 25px;
 }
