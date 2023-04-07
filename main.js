@@ -10,80 +10,98 @@
 
 /*----- constants -----*/
 const cardChoices = [
+    // {
+    //     card: 'Cipactli(Alligator)',
+    //     img: 'Images/cipactli.png'
+    // },
+    // {
+    //     card: 'Cipactli(Alligator)',
+    //     img: 'Images/cipactli.png' 
+    // },
+    // {
+    //     card: 'Coatl(Snake)',
+    //     img: 'Images/coatl.png'
+    // },
+    // {
+    //     card: 'Coatl(Snake)',
+    //     img: 'Images/coatl.png'
+    // },
+    // {
+    //     card: 'Cozcacuauhtli(Vulture)',
+    //     img: 'Images/cozcacuauhtli.png'
+    // },
+    // {
+    //     card: 'Cozcacuauhtli(Vulture)',
+    //     img: 'Images/cozcacuauhtli.png'
+    // },
+    // {
+    //     card: 'Cuauhtli(Eagle)',
+    //     img: 'Images/cuauhtli.png'
+    // },
+    // {
+    //     card: 'Cuauhtli(Eagle)',
+    //     img: 'Images/cuauhtli.png'
+    // },
+    // {
+    //     card: 'Itzcuintli(Dog)',
+    //     img: 'Images/itzcuintli.png'
+    // },
+    // {
+    //     card: 'Itzcuintli(Dog)',
+    //     img: 'Images/itzcuintli.png'
+    // },
     {
-        card: 'cipactli',
-        img: 'Images/cipactli.png'
-    },
-    {
-        card: 'cipactli',
-        img: 'Images/cipactli.png' 
-    },
-    {
-        card: 'coatl',
-        img: 'Images/coatl.png'
-    },
-    {
-        card: 'coatl',
-        img: 'Images/coatl.png'
-    },
-    {
-        card: 'cozcacuauhtli',
-        img: 'Images/cozcacuauhtli.png'
-    },
-    {
-        card: 'cozcacuauhtli',
-        img: 'Images/cozcacuauhtli.png'
-    },
-    {
-        card: 'cuauhtli',
-        img: 'Images/cuauhtli.png'
-    },
-    {
-        card: 'cuauhtli',
-        img: 'Images/cuauhtli.png'
-    },
-    {
-        card: 'itzcuintli',
-        img: 'Images/itzcuintli.png'
-    },
-    {
-        card: 'itzcuintli',
-        img: 'Images/itzcuintli.png'
-    },
-    {
-        card: 'mazatl',
+        card: 'Mazatl(Deer)',
         img: 'Images/mazatl.png'
     },
     {
-        card: 'mazatl',
+        card: 'Mazatl(Deer)',
         img: 'Images/mazatl.png'
     }
-]
+];
+
+const blank  = 'Images/turquoise.png';
+
 /*----- cached elements  -----*/
 const gameBoard = document.querySelectorAll('.cards');
+
+const matchIndicator = document.getElementById('match');
+
+const playAgainBtn = document.querySelector('button');
+
 const gameBoardArr = [...document.querySelectorAll('.cards')];
 
+const turnsLeft = document.getElementById('turnNumber');
 
-
-
-
-
-
+const cards = document.querySelectorAll('.cards img');
 
 /*----- state variables -----*/
-let cardBacks = '';
+let userPicks = [];
 
-
+let userPickIds = [];
 
 
 
 /*----- event listeners -----*/
-gameBoardArr.forEach(function(card, idx) {
+gameBoardArr.forEach((card, idx) => {
     card.addEventListener('click', function() {
-        let chosenCard = cardChoices[idx]
-        card.firstChild.setAttribute('src', chosenCard.img)
-        console.log(chosenCard.img)
-        console.log(card.firstChild)
+        let chosenCard = cardChoices[idx];
+        card.firstChild.setAttribute('src', chosenCard.img);
+        card.firstChild.setAttribute('data-id', idx);
+        let cardID = card.firstChild.getAttribute('data-id');
+        userPicks.push(cardChoices[cardID].card);
+        if(userPicks.length === 2) {
+            checkForMatch()
+        }; 
+        function checkForMatch() {
+            
+            if(userPicks[0] === userPicks[1]) {
+                matchIndicator.innerHTML = `You Matched ${cardChoices[cardID].card}!`;
+                
+                
+                
+            }
+        };
     })
 })
 

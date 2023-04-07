@@ -28,12 +28,20 @@ header > span {
 h2 {
     font-family: 'Tillana', cursive;
     color: darkolivegreen;
-    margin-top: 0;
+    margin-top: 2vmin;
+    margin-bottom: 0;
     font-size: 4vmin;
 }
 
 h2 > span {
     color: black;
+}
+
+#match {
+    color: black;
+    font-size: 4vmin;
+    margin: 0;
+
 }
 
 h3 {
@@ -66,6 +74,7 @@ button {
     color: turquoise;
     font-size: 2vmin;
     font-family: 'Tillana', cursive;
+    visibility: hidden;
 }
 
 button:hover {
