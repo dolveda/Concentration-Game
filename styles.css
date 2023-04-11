@@ -34,7 +34,7 @@ h2 {
 }
 
 h2 > span {
-    color: black;
+    color: firebrick;
 }
 
 #match {

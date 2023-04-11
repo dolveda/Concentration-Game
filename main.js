@@ -1,5 +1,5 @@
 // Pseudo:
-// 1)The game will initialize with the title, a brief description of how to win, and the Turn indicator set to 1, the first turn of the game. The gameboard will have all cards set to the "back" position showing. The "play again" button will be hidden until the game is over.
+// 1)The game will initialize with the title, a brief description of how to win, and the Turns left indicator set to 3. The gameboard will have all cards set to the "back" position showing. The "play again" button will be hidden until the game is over.
 // 2) The player will start the game by clicking on a card, triggering an event listener to call a function which will turn the card over, displaying the value of the card.
 // 3) The player will continue their turn by clicking and turning over a second card.
 // 4) If the next card selected matches the previously turned card, the player's turn will continue and begin the pairing function again.
@@ -10,57 +10,57 @@
 
 /*----- constants -----*/
 const cardChoices = [
-    // {
-    //     card: 'Cipactli(Alligator)',
-    //     img: 'Images/cipactli.png'
-    // },
-    // {
-    //     card: 'Cipactli(Alligator)',
-    //     img: 'Images/cipactli.png' 
-    // },
-    // {
-    //     card: 'Coatl(Snake)',
-    //     img: 'Images/coatl.png'
-    // },
-    // {
-    //     card: 'Coatl(Snake)',
-    //     img: 'Images/coatl.png'
-    // },
-    // {
-    //     card: 'Cozcacuauhtli(Vulture)',
-    //     img: 'Images/cozcacuauhtli.png'
-    // },
-    // {
-    //     card: 'Cozcacuauhtli(Vulture)',
-    //     img: 'Images/cozcacuauhtli.png'
-    // },
-    // {
-    //     card: 'Cuauhtli(Eagle)',
-    //     img: 'Images/cuauhtli.png'
-    // },
-    // {
-    //     card: 'Cuauhtli(Eagle)',
-    //     img: 'Images/cuauhtli.png'
-    // },
-    // {
-    //     card: 'Itzcuintli(Dog)',
-    //     img: 'Images/itzcuintli.png'
-    // },
-    // {
-    //     card: 'Itzcuintli(Dog)',
-    //     img: 'Images/itzcuintli.png'
-    // },
     {
-        card: 'Mazatl(Deer)',
-        img: 'Images/mazatl.png'
+        card: 'Cipactli(Alligator)',
+        img: 'Images/cipactli.png'
     },
     {
-        card: 'Mazatl(Deer)',
-        img: 'Images/mazatl.png'
-    }
+        card: 'Cipactli(Alligator)',
+        img: 'Images/cipactli.png' 
+    },
+    {
+        card: 'Coatl(Snake)',
+        img: 'Images/coatl.png'
+    },
+    {
+        card: 'Coatl(Snake)',
+        img: 'Images/coatl.png'
+    },
+    // {
+    //     card: 'Cozcacuauhtli(Vulture)',
+    //     img: 'Images/cozcacuauhtli.png'
+    // },
+    // {
+    //     card: 'Cozcacuauhtli(Vulture)',
+    //     img: 'Images/cozcacuauhtli.png'
+    // },
+    // {
+    //     card: 'Cuauhtli(Eagle)',
+    //     img: 'Images/cuauhtli.png'
+    // },
+    // {
+    //     card: 'Cuauhtli(Eagle)',
+    //     img: 'Images/cuauhtli.png'
+    // },
+    // {
+    //     card: 'Itzcuintli(Dog)',
+    //     img: 'Images/itzcuintli.png'
+    // },
+    // {
+    //     card: 'Itzcuintli(Dog)',
+    //     img: 'Images/itzcuintli.png'
+    // },
+    // {
+    //     card: 'Mazatl(Deer)',
+    //     img: 'Images/mazatl.png'
+    // },
+    // {
+    //     card: 'Mazatl(Deer)',
+    //     img: 'Images/mazatl.png'
+    // }
 ];
 
-const blank  = 'Images/turquoise.png';
+const matchImg  = 'Images/turquoise.png';
 
 /*----- cached elements  -----*/
 const gameBoard = document.querySelectorAll('.cards');
@@ -75,12 +75,13 @@ const turnsLeft = document.getElementById('turnNumber');
 
 const cards = document.querySelectorAll('.cards img');
 
+
 /*----- state variables -----*/
 let userPicks = [];
 
 let userPickIds = [];
 
-
+let matchedCards = [];
 
 /*----- event listeners -----*/
 gameBoardArr.forEach((card, idx) => {
@@ -90,24 +91,34 @@ gameBoardArr.forEach((card, idx) => {
         card.firstChild.setAttribute('data-id', idx);
         let cardID = card.firstChild.getAttribute('data-id');
         userPicks.push(cardChoices[cardID].card);
+        userPickIds.push(cardID);
+        
         if(userPicks.length === 2) {
-            checkForMatch()
+            setTimeout(checkForMatch, 700)
         }; 
         function checkForMatch() {
-            
             if(userPicks[0] === userPicks[1]) {
-                matchIndicator.innerHTML = `You Matched ${cardChoices[cardID].card}!`;
-                
-                
-                
+                matchIndicator.innerHTML = `Cualli! You Matched ${cardChoices[cardID].card}!`;
+                cards[userPickIds[0]].removeEventListener('click', chosenCard);
+                cards[userPickIds[1]].removeEventListener('click', chosenCard);
+                matchedCards.push(userPicks);               
+            } else {
+                cards[userPickIds[0]].setAttribute('src', 'Images/tlahtolli.png');
+                cards[userPickIds[1]].setAttribute('src', 'Images/tlahtolli.png');
+                matchIndicator.innerHTML  = 'Zampa! Try Again!'
             }
+            if(userPickIds[0] === userPickIds[1]) {
+                matchIndicator.innerHTML = "Axcualli! You can't pick the same card!"
+            }
+            userPicks = [];
+            userPickIds =[];
         };
     })
 })
 
 
 /*----- functions -----*/
-// initialize();
+
 
 function randomizeCards(arr) {
     for (let i = arr.length - 1; i > 0;  i --) {
@@ -117,15 +128,12 @@ function randomizeCards(arr) {
 }
 randomizeCards(cardChoices);
 
-function  render() {
-    renderGameBoard();
-}
 
 
 
 
 
-// renderGameBoard()
+
 
 
 
