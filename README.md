@@ -2,6 +2,8 @@
 Neyollotilo is a memory game and language learning tool which means "Something to  commit  to memory" in Nahuatl, the most spoken indigenous language on this continent. The game uses animal images from pre-colonial sources with their Nahuatl nomenclature, as well as an english translation. Message and button features of the game also include Nahuatl words and phrases with approximate translations. The goal of this game is to help those learning their indigenous language practice their memory and pronunciations of Nahuatl words and animals.
 
 ## Getting Started:
+https://dolveda.github.io/Concentration-Game/
+
 1)The game will render with the title, a brief description of how to win, and the Turns left indicator set to 4. The gameboard will have all cards set to the "back" position showing. The "play again" button will be hidden until the game is over.
 ![startgame](/screenshots/start.png)
 
